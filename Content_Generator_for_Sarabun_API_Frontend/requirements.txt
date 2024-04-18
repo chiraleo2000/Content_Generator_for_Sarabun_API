@@ -1,0 +1,17 @@
+streamlit
+fastapi
+pydantic
+langchain
+tiktoken
+promptlayer
+anthropic
+pandas
+python-dotenv
+docx2txt
+PyPDF2
+uvicorn
+pytesseract
+pdf2image
+openpyxl
+openai
+pdfplumber

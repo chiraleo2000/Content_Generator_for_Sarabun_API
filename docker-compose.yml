@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  frontend:
+    build: ./Content_Generator_for_Sarabun_API_Frontend
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./Content_Generator_for_Sarabun_API_Frontend:/app
+    depends_on:
+      - backend
+    environment:
+      - API_ENDPOINT_GEN=http://backend:8150/generate-content
+      - API_ENDPOINT_REFINE=http://backend:8150/refine-content
+      - API_ENDPOINT_SUM=http://backend:8150/summarize-content
+    networks:
+      - sarabun-net
+
+  backend:
+    build: ./Content_Generator_for_Sarabun_API_Backend
+    ports:
+      - "8150:8150"
+    volumes:
+      - ./Content_Generator_for_Sarabun_API_Backend:/app
+    networks:
+      - sarabun-net
+
+networks:
+  sarabun-net:
+    driver: bridge
